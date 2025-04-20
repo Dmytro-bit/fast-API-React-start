@@ -1,0 +1,6 @@
+pip install pydantic==2.7.1 pydantic_settings==2.2.1 // delete version
+
+mypy==1.10.0 // static analysis of the source code without running it
+pydantic==2.7.4
+
+pip install pydantic[email] // install email validator
