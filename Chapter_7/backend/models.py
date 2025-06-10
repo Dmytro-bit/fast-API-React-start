@@ -13,8 +13,8 @@ class CarModel(BaseModel):
     make: str = Field(...)
     year: int = Field(..., gt=1970, lt=2025)
     cm3: int = Field(..., gt=0, lt=5000)  # engine volume in cm^3
-    km: int = Field(..., gt=0, lt=500000)
-    price: int = Field(..., gt=0, lt=100000)
+    km: int = Field(..., gt=0, lt=500_000)
+    price: int = Field(..., gt=0, lt=1_000_000)
     user_id: str = Field(...)
     picture_url: Optional[str] = Field(None)
 
@@ -58,7 +58,7 @@ class CarCollection(BaseModel):
 
 
 class UserBase(BaseModel):
-    id: str = Field(...)
+    id: Optional[PyObjectId] = Field(alias="_id", default=None)
     username: str = Field(..., min_length=3, max_length=15)
     password: str = Field(...)
 
@@ -69,7 +69,7 @@ class UserIn(BaseModel):
 
 
 class UserOut(BaseModel):
-    id: str = Field(...)
+    id: Optional[PyObjectId] = Field(alias="_id", default=None)
     username: str = Field(..., min_length=3, max_length=15)
 
 

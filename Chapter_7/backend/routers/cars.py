@@ -33,10 +33,8 @@ async def add_car_with_picture(request: Request,
                                price: int = Form("price"),
                                picture: UploadFile = File("picture"),
                                user: str = Depends(auth_handler.auth_wrapper)):
-    print("Hello")
     cloudinary_image = cloudinary.uploader.upload(picture.file, crop="fill", width=800)
     picture_url = cloudinary_image["url"]
-    print("Hello 2")
     car = CarModel(
         brand=brand,
         make=make,
